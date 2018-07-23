@@ -4,8 +4,7 @@
         name="test_rossetip0"
         pkg="jsk_tools" type="test_stdout.py">
     <!-- testing https://github.com/jsk-ros-pkg/jsk_common/issues/1472 -->
-    <param name="~command" value="source $(find jsk_tools)/env-hooks/99.jsk_tools.sh &amp;&amp;
-                                  ip() {echo 'local 192.168.96.20 dev lo src 192.168.96.20 \ cache'} &amp;&amp; rossetip" />
+    <param name="~command" value="ip() {echo 'local 192.168.96.20 dev lo src 192.168.96.20 \ cache'} &amp;&amp; rossetip" />
     <param name="stdout" value="set ROS_IP and ROS_HOSTNAME to 192.168.96.20" />
   </test>
 
@@ -13,8 +12,7 @@
         name="test_rossetip1"
         pkg="jsk_tools" type="test_stdout.py">
     <!-- testing https://github.com/jsk-ros-pkg/jsk_common/issues/1472 -->
-    <param name="~command" value="source $(find jsk_tools)/env-hooks/99.jsk_tools.sh &amp;&amp;
-                                  ip() {echo '192.168.96.21 dev eth0 src 192.168.96.20 \ cache'} &amp;&amp; rossetip" />
+    <param name="~command" value="ip() {echo '192.168.96.21 dev eth0 src 192.168.96.20 \ cache'} &amp;&amp; rossetip" />
     <param name="stdout" value="set ROS_IP and ROS_HOSTNAME to 192.168.96.20" />
   </test>
 
@@ -22,8 +20,7 @@
         name="test_rossetip2"
         pkg="jsk_tools" type="test_stdout.py">
     <!-- testing https://github.com/jsk-ros-pkg/jsk_common/issues/1472 -->
-    <param name="~command" value="source $(find jsk_tools)/env-hooks/99.jsk_tools.sh &amp;&amp;
-                                  ip() {echo '8.8.8.8 via 133.11.216.254 dev wlp3s0  src 192.168.96.20 \    cache'} &amp;&amp; rossetip" />
+    <param name="~command" value="ip() {echo '8.8.8.8 via 133.11.216.254 dev wlp3s0  src 192.168.96.20 \    cache'} &amp;&amp; rossetip" />
     <param name="stdout" value="set ROS_IP and ROS_HOSTNAME to 192.168.96.20" />
   </test>
 
