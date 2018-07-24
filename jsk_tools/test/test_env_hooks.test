@@ -4,7 +4,8 @@
         name="test_rossetip0"
         pkg="jsk_tools" type="test_stdout.py">
     <!-- testing https://github.com/jsk-ros-pkg/jsk_common/issues/1472 -->
-    <param name="~command" value="ip() {echo 'local 192.168.96.20 dev lo src 192.168.96.20 \ cache'} &amp;&amp; rossetip" />
+    <param name="~command" value="/bin/sh $(find jsk_tools)/env-hooks/99.jsk_tools.sh &amp;&amp;
+        ip() {echo 'local 192.168.96.20 dev lo src 192.168.96.20 \ cache'} &amp;&amp; rossetip" />
     <param name="stdout" value="set ROS_IP and ROS_HOSTNAME to 192.168.96.20" />
   </test>
 
