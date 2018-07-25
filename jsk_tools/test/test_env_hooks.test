@@ -5,8 +5,8 @@
         pkg="jsk_tools" type="test_stdout.py">
     <!-- testing https://github.com/jsk-ros-pkg/jsk_common/issues/1472 -->
     <param name="~command" value="/bin/bash $(find jsk_tools)/test/sh/rossetip.sh
-                                  &quot;local 192.168.96.20 dev lo  src 192.168.96.20 \    cache&quot;" />
-    <param name="stdout" value="192.168.96.20" />
+                                  &quot;2: eth33    inet 133.11.216.88/24 brd 133.11.216.255 scope global eth33&quot;" />
+    <param name="stdout" value="133.11.216.88" />
   </test>
 
   <test test-name="test_rossetip1"
@@ -14,16 +14,7 @@
         pkg="jsk_tools" type="test_stdout.py">
     <!-- testing https://github.com/jsk-ros-pkg/jsk_common/issues/1472 -->
     <param name="~command" value="/bin/bash $(find jsk_tools)/test/sh/rossetip.sh
-                                  &quot;192.168.96.20 dev lo  src 192.168.96.20 \    cache&quot;" />
-    <param name="stdout" value="192.168.96.20" />
-  </test>
-
-  <test test-name="test_rossetip2"
-        name="test_rossetip2"
-        pkg="jsk_tools" type="test_stdout.py">
-    <!-- testing https://github.com/jsk-ros-pkg/jsk_common/issues/1472 -->
-    <param name="~command" value="/bin/bash $(find jsk_tools)/test/sh/rossetip.sh
-                                  &quot;8.8.8.8 via 133.11.216.254 dev wlp3s0  src 192.168.96.20 \    cache&quot;" />
+                                  &quot;2: lo    inet 192.168.96.20/24 brd 192.168.102.255 scope global&quot;" />
     <param name="stdout" value="192.168.96.20" />
   </test>
 
