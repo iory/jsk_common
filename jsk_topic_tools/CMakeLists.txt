@@ -107,6 +107,8 @@ jsk_topic_tools_nodelet(src/string_relay_nodelet.cpp
   "jsk_topic_tools/StringRelay" "string_relay")
 jsk_topic_tools_nodelet(src/synchronized_throttle_nodelet.cpp
   "jsk_topic_tools/SynchronizedThrottle" "synchronized_throttle")
+jsk_topic_tools_nodelet(src/joint_state_static_filter_nodelet.cpp
+  "jsk_topic_tools/JointStateStaticFilter" "joint_state_static_filter")
 
 add_library(jsk_topic_tools SHARED
   ${jsk_topic_tools_nodelet_sources}
