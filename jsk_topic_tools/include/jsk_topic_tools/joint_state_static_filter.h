@@ -69,6 +69,9 @@ namespace jsk_topic_tools
       const sensor_msgs::JointState::ConstPtr& msg);
     virtual void subscribe();
     virtual void unsubscribe();
+    virtual ros::Publisher advertise(
+      boost::shared_ptr<topic_tools::ShapeShifter const> msg,
+      const std::string& topic);
     ////////////////////////////////////////////////////////
     // ROS variables
     ////////////////////////////////////////////////////////
