@@ -49,4 +49,10 @@ namespace jsk_topic_tools
     Publisher(rhs) {
     last_published_time_ = rhs.last_published_time_;
   }
+
+  RecordedTimeImagePublisher::RecordedTimeImagePublisher(const ros::NodeHandle& nh)
+    : // image_transport::Publisher(nh)
+  {
+    last_published_time_ = ros::Time::now();
+  }
 }

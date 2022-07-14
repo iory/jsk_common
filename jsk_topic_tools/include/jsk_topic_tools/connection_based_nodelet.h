@@ -44,10 +44,6 @@
 #include "jsk_topic_tools/log_utils.h"
 #include "jsk_topic_tools/recorded_time_publisher.h"
 
-template<typename Base, typename T>
-inline bool isinstance(const T *ptr) {
-  return dynamic_cast<const Base*>(ptr) != nullptr;
-}
 
 namespace jsk_topic_tools
 {
@@ -369,10 +365,8 @@ namespace jsk_topic_tools
       ros::Time current_time = ros::Time::now();
       ROS_ERROR("updateLastPublishedTime called");
       for (size_t i = 0; i < publishers_.size(); ++i) {
-        if (isinstance<jsk_topic_tools::RecordedTimePublisher>(&publishers_[i])) {
-          publishers_[i].last_published_time_ = current_time;
-          ROS_ERROR("last published time called. %lf", current_time.toSec());
-        }
+        publishers_[i].last_published_time_ = current_time;
+        ROS_ERROR("last published time called. %d, %lf", i, current_time.toSec());
       }
     }
 
