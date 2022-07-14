@@ -44,6 +44,11 @@
 #include "jsk_topic_tools/log_utils.h"
 #include "jsk_topic_tools/recorded_time_publisher.h"
 
+template<typename Base, typename T>
+inline bool isinstance(const T *ptr) {
+  return dynamic_cast<const Base*>(ptr) != nullptr;
+}
+
 namespace jsk_topic_tools
 {
   /** @brief
@@ -359,7 +364,16 @@ namespace jsk_topic_tools
       camera_publishers_.push_back(pub);
       return pub;
     }
-    
+
+    void updateLastPublishedTime() {
+      ros::Time current_time = ros::Time::now();
+      for (size_t i = 0; i < publishers_.size(); ++i) {
+        if (isinstance<jsk_topic_tools::RecordedTimePublisher>(&publishers_[i])) {
+          publishers_[i].last_published_time_ = current_time;
+        }
+      }
+    }
+
     /** @brief
      * mutex to call subscribe() and unsubscribe() in
      * critical section.
@@ -369,7 +383,7 @@ namespace jsk_topic_tools
     /** @brief
      * List of watching publishers
      */
-    std::vector<ros::Publisher> publishers_;
+    std::vector<jsk_topic_tools::RecordedTimePublisher> publishers_;
 
     /** @brief
      * List of watching image publishers
