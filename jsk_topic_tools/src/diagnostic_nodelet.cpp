@@ -37,6 +37,11 @@
 #include <sstream>
 namespace jsk_topic_tools
 {
+  DiagnosticNodelet::DiagnosticNodelet():
+    name_(ros::this_node::getName())
+  {
+  }
+
   DiagnosticNodelet::DiagnosticNodelet(const std::string& name):
     name_(name)
   {
