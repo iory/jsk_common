@@ -187,7 +187,7 @@ namespace jsk_topic_tools
             if (verbose_connection_) {
               NODELET_INFO("Subscribe input topics");
             }
-            updateLastPublishedTime()
+            updateLastPublishedTime();
             subscribe();
             connection_status_ = SUBSCRIBED;
           }
@@ -233,7 +233,7 @@ namespace jsk_topic_tools
             if (verbose_connection_) {
               NODELET_INFO("Subscribe input topics");
             }
-            updateLastPublishedTime()
+            updateLastPublishedTime();
             subscribe();
             connection_status_ = SUBSCRIBED;
           }
