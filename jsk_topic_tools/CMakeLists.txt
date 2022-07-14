@@ -131,6 +131,7 @@ add_library(jsk_topic_tools SHARED
   src/vital_checker.cpp
   src/color_utils.cpp
   src/log_utils.cpp
+  src/recorded_time_publisher.cpp
   src/connection_based_nodelet.cpp
   src/diagnostic_nodelet.cpp
   src/series_boolean.cpp
