@@ -42,6 +42,7 @@
 #include <boost/thread.hpp>
 #include <image_transport/image_transport.h>
 #include "jsk_topic_tools/log_utils.h"
+#include "jsk_topic_tools/recorded_time_publisher.h"
 
 namespace jsk_topic_tools
 {
@@ -200,6 +201,25 @@ namespace jsk_topic_tools
                                            disconnect_cb,
                                            ros::VoidConstPtr(),
                                            latch);
+      publishers_.push_back(ret);
+
+      return ret;
+    }
+
+    template<class T> jsk_topic_tools::RecordedTimePublisher
+    recordedTimeAdvertise(ros::NodeHandle& nh,
+                          std::string topic, int queue_size = 1, bool latch = false)
+    {
+      boost::mutex::scoped_lock lock(connection_mutex_);
+      ros::SubscriberStatusCallback connect_cb
+        = boost::bind(&ConnectionBasedNodelet::connectionCallback, this, _1);
+      ros::SubscriberStatusCallback disconnect_cb
+        = boost::bind(&ConnectionBasedNodelet::connectionCallback, this, _1);
+      RecordedTimePublisher ret(nh.advertise<T>(topic, queue_size,
+                                                connect_cb,
+                                                disconnect_cb,
+                                                ros::VoidConstPtr(),
+                                                latch));
       publishers_.push_back(ret);
 
       return ret;
